@@ -70,9 +70,9 @@ class Subscriber {
   //this code here helps to print the subscriber name on the console as string and not as object. check line 26 or thereabouts above
 
   update(number) {
-    if (this.name === "First Observer") {
+    if (this.name === "First subscriber") {
       console.log(`${number}`);
-    } else if (this.name === "Second Observer") {
+    } else if (this.name === "Second subscriber") {
       console.log(`Now Dialing ${number}`);
     }
   }
@@ -80,8 +80,8 @@ class Subscriber {
 
 const myTelephone = new Telephone();
 
-const khalifa = new Subscriber("First Observer");
-const ogechi = new Subscriber("Second Observer");
+const khalifa = new Subscriber("First subscriber");
+const ogechi = new Subscriber("Second subscriber");
 const livinus = new Subscriber("Livinus");
 
 myTelephone.addSubscriber(khalifa);
