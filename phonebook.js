@@ -27,8 +27,8 @@ class Telephone {
     }
   }
 
-  notifySubscribers(message) {
-    this.subscribers.forEach((subscriber) => subscriber.update(message));
+  notifySubscribers(number) {
+    this.subscribers.forEach((subscriber) => subscriber.update(number));
   }
 
   addPhoneNumber(number) {
@@ -48,7 +48,7 @@ class Telephone {
 
   dialPhoneNumber(number) {
     if (this.phoneBook.includes(number)) {
-      this.notifySubscribers(number);
+      // this.notifySubscribers(number);
       console.log(`Dialing ${number}...\n`);
     } else {
       console.log(
@@ -69,24 +69,20 @@ class Subscriber {
   //   }
   //this code here helps to print the subscriber name on the console as string and not as object. check line 26 or thereabouts above
 
-  update(message) {
-    if (this.type === "add" && message && message.startsWith("Added")) {
-      console.log(`${this.name}, ${message}`);
-    } else if (
-      this.type === "dial" &&
-      message &&
-      message.startsWith("Dialing")
-    ) {
-      console.log(`${this.name}, ${message}`);
+  update(number) {
+    if (this.name === "First Observer") {
+      console.log(`Phone Number: ${number}`);
+    } else if (this.name === "Second Observer") {
+      console.log(`Dialing: ${number}`);
     }
   }
 }
 
 const myTelephone = new Telephone();
 
-const khalifa = new Subscriber("Khalifa", "add");
-const ogechi = new Subscriber("Ogechi", "dial");
-const livinus = new Subscriber("Livinus", "dial");
+const khalifa = new Subscriber("First Observer");
+const ogechi = new Subscriber("Second Observer");
+const livinus = new Subscriber("Livinus");
 
 myTelephone.addSubscriber(khalifa);
 myTelephone.addSubscriber(ogechi);
@@ -102,5 +98,6 @@ myTelephone.removePhoneNumber("23490233232");
 myTelephone.removePhoneNumber("23490565656");
 
 myTelephone.dialPhoneNumber("23470233232");
+myTelephone.dialPhoneNumber("23490565656");
 
-myTelephone.notifySubscribers();
+myTelephone.notifySubscribers("23470233232");
