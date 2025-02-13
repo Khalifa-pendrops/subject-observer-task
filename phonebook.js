@@ -71,9 +71,9 @@ class Subscriber {
 
   update(number) {
     if (this.name === "First Observer") {
-      console.log(`Phone Number: ${number}`);
+      console.log(`${number}`);
     } else if (this.name === "Second Observer") {
-      console.log(`Dialing: ${number}`);
+      console.log(`Now Dialing ${number}`);
     }
   }
 }
